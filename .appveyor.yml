@@ -27,12 +27,12 @@ environment:
 install:
   # We need wheel installed to build wheels
   - "%PYTHON%\\python.exe -m pip install wheel twine"
-  # install swig and put it on the path
-  - curl -sSfL -o swigwin.zip https://prdownloads.sourceforge.net/swig/swigwin-3.0.12.zip
+  # install swig and put it on the path. Retry because of network issues with sourceforge
+  - appveyor-retry curl -sSfL -o swigwin.zip https://prdownloads.sourceforge.net/swig/swigwin-3.0.12.zip
   - 7z x swigwin.zip -oC:\ > NUL
   - set PATH=C:\swigwin-3.0.12;%PATH%
   # install pylon
-  - ps: Start-FileDownload $env:PYLON_INSTALLER_URL -FileName pylon_installer.exe
+  - appveyor-retry curl -sSfL -o pylon_installer.exe %PYLON_INSTALLER_URL%
   - pylon_installer.exe /quiet /install
   # PYLON_DEV_DIR is not available in the shell after installation, so we set it manually
   - set PYLON_DEV_DIR=%PROGRAMFILES%\Basler\pylon 5\development
