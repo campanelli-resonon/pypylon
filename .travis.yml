@@ -43,9 +43,12 @@ deploy:
       branch: master
       tags: true
   - provider: pypi
-    user: "basler"
+    skip_cleanup: true
     distributions: "bdist_wheel"
+    file_glob: true
+    file: dist/*
     server: https://test.pypi.org/legacy/
+    user: "basler"
     password:
       secure: d27a071hMhRatk25N5oSMJCDcrJJiL23BVMuXaqbkBP5CixhSVAFoFh476zke+WZKn9bnzzfEFxnUVVzT9XZIBT3Yxy9PhsNHCJ+KpISj+xcMrG+54QsQyjmXZvMLlYdxCocIMt1/QwD0UJylOYPGrGx5DcttqV3esx6TX+3PaNu+4p/3blY7tGQBm5AA+6aM1up3JlUzCSL3PbJzVv8FFcLD07mZ4yyj4yxBMOGZoEKDzW15e9r6fBSFZEScL/QII43cdnH++r2tROLxdet/d74+KHXPYyAGGzhICoaK5IjLAouOxkXW5/zcZLiD+AuHNxmtFCCO47TzscY7q2jYmwcz/p7hE61ooMK+UyLs2/CSdiwVkUX7MHQQEwyKg8kgypwKYblU63MRPQEIYFAd/6MVOginM+AedFP5C7b5NdwdnsFAPqaQ2g3dzGXDQtzINtYN1lVbLf6QeUHX4/5LlwoUrzjrjuvbpnp3yqtPm5nf6MYIplVU7cEze+owUuJNywP20ZReE6HgSwc/1esSrvSklb7WPbMlpwcxNiCw7Sj2ERdzVzQ38SxxO4DLSHntL36HbZvNu+VE7LkKrlmEZ2lkMnKb8AwbRQGF/apNM0wXbfjMtzfcjsruE3T+ry75290+6JEpQL6w5D52xjaS2C52Iy3MUVGDJctqhzGdME=
       #secure: T3TbW5nl6EDDzeawQ4Ejke5BLQzczTvOjC+P49yjidxpzhfKuCILp1v3YyKlzYA2dXFwrBD+JwtD9HoJr7Q6SK/8UaYaFeMG2ge3fq3eyTe3eQbsWH4vAFLDUuOq2yXecsDeXyz8TLdmRXztE1fpiOPqMexSIrbe8Zz6ZmPTpurDi62OEBADn1tlUHF94bnOJZJxV6Sy84zILDxdJKbHlJs/UNckA/aW9etPXLtcq4B7xAcXYkvAwhE4FHkUT5sU7Xu1NF3eb+fX4Ak5cF6+dPALijgbw7EXtxtgKa6IqAVal74feNC/2w6hE8y0+lTasR7zToevz1P1j4lRW2MD2HbK1yvSPEbLFiZwveloi+WLGPy4YU56Bp3DvNW+E2pUvztIFPqu7Fc8biM+yAlvdqj1JvFyVkM6iHW+fc585yfW92rqzfxVuLITcNN6NWNClCJgZRDRosBNt3XV4SOArRbDonom6N7SR0tuoiK/TNKlUMLK/k4kJwow9V1HeXpIPGfdOje4PH5MfUjpAg40zEulhi+Dng69q/YwlID6fsSEVMTpCFYl3Y4NCt/KEwfwWYbyd0IMUdErmFkVuPu/+1zA2ggP6kHUwaXf+ZvJqpau3vMrWG5DAGS11QlvvoqqpwkLJDlQpNhyfRGFUCN5xt+wxlpMo0y04RlWVlKr2+4=
