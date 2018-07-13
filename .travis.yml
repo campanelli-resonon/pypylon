@@ -1,7 +1,7 @@
 sudo: required
 services:
 - docker
-language: cpp
+language: python
 
 env:
 - P=linux_x86_64 A=cp35m
