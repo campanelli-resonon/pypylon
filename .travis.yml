@@ -32,13 +32,20 @@ script:
 - "./scripts/build/build-arch.sh --platform-tag $P --abi-tag $A --pylon-dir ./pylon_installer"
 
 deploy:
-  provider: releases
-  skip_cleanup: true
-  api_key:
-    secure: R46oPGgeRYe2GB5JLMW8doUQf4lQx1oa+Jvr7HMbZpoVHC/EV37l9wrYLkY3BHLc3DUB6Xnc94Dc0IxEnQ3AV+vuSmDTDqdsEo7KYF+ZRMab+J4XpzLvP7E0QHwslXhCIUraEtTom4UydV5Oh6Zz4KA5utNjE9O7KUHHatcccq7/fP/8M2aZocVkkwOzNfl91tTT1nJXMtf10XGKkdI1O0VwSLkXjihIbPDANx53RWCgJgD3JGwbsDQf3lg6mzaJyx7DJ0BVSZT5tErE32pkLJqXNLsy/RQ1lPu0Ycf1HxrgYqH8NvDu4KxfKw41dcMkp6gN4ELhuVOChkztvxB1QPKHn6SdJL86+ipOZiycdnqvAAg1UD2q9idCDE4KhrD8PBJXme/1qLq578NA2PmXbWEGuHk69N/CNWhg898pFUQb600LhpsT28J7HVxGOrELr/6W0RNuEA0YCemfhDm5CQlFw8GVQ4DdFOM6dMyeeQnuWbXKQow9W0ZH/Hf8cklLfvYRYZxoulHzOF6Ley1MMVO2RHWnkZ078Xatm37El2oHkv1xxr/7Yo8GZyKTzaRKrsemtIFnuCxmK/JKGhKJlgtn6en4PL99X4EjmokjL5dhXSgz6jGb72xK7V+Xo5N6DH5t4p5huHXO8HXd5Sq3jHXD5eOZu5iHiwdrkzcJgkc=
-  file_glob: true
-  file: dist/*
-  on:
-    repo: basler/pypylon
-    branch: master
-    tags: true
+  - provider: releases
+    skip_cleanup: true
+    api_key:
+      secure: R46oPGgeRYe2GB5JLMW8doUQf4lQx1oa+Jvr7HMbZpoVHC/EV37l9wrYLkY3BHLc3DUB6Xnc94Dc0IxEnQ3AV+vuSmDTDqdsEo7KYF+ZRMab+J4XpzLvP7E0QHwslXhCIUraEtTom4UydV5Oh6Zz4KA5utNjE9O7KUHHatcccq7/fP/8M2aZocVkkwOzNfl91tTT1nJXMtf10XGKkdI1O0VwSLkXjihIbPDANx53RWCgJgD3JGwbsDQf3lg6mzaJyx7DJ0BVSZT5tErE32pkLJqXNLsy/RQ1lPu0Ycf1HxrgYqH8NvDu4KxfKw41dcMkp6gN4ELhuVOChkztvxB1QPKHn6SdJL86+ipOZiycdnqvAAg1UD2q9idCDE4KhrD8PBJXme/1qLq578NA2PmXbWEGuHk69N/CNWhg898pFUQb600LhpsT28J7HVxGOrELr/6W0RNuEA0YCemfhDm5CQlFw8GVQ4DdFOM6dMyeeQnuWbXKQow9W0ZH/Hf8cklLfvYRYZxoulHzOF6Ley1MMVO2RHWnkZ078Xatm37El2oHkv1xxr/7Yo8GZyKTzaRKrsemtIFnuCxmK/JKGhKJlgtn6en4PL99X4EjmokjL5dhXSgz6jGb72xK7V+Xo5N6DH5t4p5huHXO8HXd5Sq3jHXD5eOZu5iHiwdrkzcJgkc=
+    file_glob: true
+    file: dist/*
+    on:
+      repo: basler/pypylon
+      branch: master
+      tags: true
+  - provider: pypi
+    user: "basler"
+    distributions: "bdist_wheel"
+    server: https://test.pypi.org/legacy/
+    password:
+      secure: d27a071hMhRatk25N5oSMJCDcrJJiL23BVMuXaqbkBP5CixhSVAFoFh476zke+WZKn9bnzzfEFxnUVVzT9XZIBT3Yxy9PhsNHCJ+KpISj+xcMrG+54QsQyjmXZvMLlYdxCocIMt1/QwD0UJylOYPGrGx5DcttqV3esx6TX+3PaNu+4p/3blY7tGQBm5AA+6aM1up3JlUzCSL3PbJzVv8FFcLD07mZ4yyj4yxBMOGZoEKDzW15e9r6fBSFZEScL/QII43cdnH++r2tROLxdet/d74+KHXPYyAGGzhICoaK5IjLAouOxkXW5/zcZLiD+AuHNxmtFCCO47TzscY7q2jYmwcz/p7hE61ooMK+UyLs2/CSdiwVkUX7MHQQEwyKg8kgypwKYblU63MRPQEIYFAd/6MVOginM+AedFP5C7b5NdwdnsFAPqaQ2g3dzGXDQtzINtYN1lVbLf6QeUHX4/5LlwoUrzjrjuvbpnp3yqtPm5nf6MYIplVU7cEze+owUuJNywP20ZReE6HgSwc/1esSrvSklb7WPbMlpwcxNiCw7Sj2ERdzVzQ38SxxO4DLSHntL36HbZvNu+VE7LkKrlmEZ2lkMnKb8AwbRQGF/apNM0wXbfjMtzfcjsruE3T+ry75290+6JEpQL6w5D52xjaS2C52Iy3MUVGDJctqhzGdME=
+      #secure: T3TbW5nl6EDDzeawQ4Ejke5BLQzczTvOjC+P49yjidxpzhfKuCILp1v3YyKlzYA2dXFwrBD+JwtD9HoJr7Q6SK/8UaYaFeMG2ge3fq3eyTe3eQbsWH4vAFLDUuOq2yXecsDeXyz8TLdmRXztE1fpiOPqMexSIrbe8Zz6ZmPTpurDi62OEBADn1tlUHF94bnOJZJxV6Sy84zILDxdJKbHlJs/UNckA/aW9etPXLtcq4B7xAcXYkvAwhE4FHkUT5sU7Xu1NF3eb+fX4Ak5cF6+dPALijgbw7EXtxtgKa6IqAVal74feNC/2w6hE8y0+lTasR7zToevz1P1j4lRW2MD2HbK1yvSPEbLFiZwveloi+WLGPy4YU56Bp3DvNW+E2pUvztIFPqu7Fc8biM+yAlvdqj1JvFyVkM6iHW+fc585yfW92rqzfxVuLITcNN6NWNClCJgZRDRosBNt3XV4SOArRbDonom6N7SR0tuoiK/TNKlUMLK/k4kJwow9V1HeXpIPGfdOje4PH5MfUjpAg40zEulhi+Dng69q/YwlID6fsSEVMTpCFYl3Y4NCt/KEwfwWYbyd0IMUdErmFkVuPu/+1zA2ggP6kHUwaXf+ZvJqpau3vMrWG5DAGS11QlvvoqqpwkLJDlQpNhyfRGFUCN5xt+wxlpMo0y04RlWVlKr2+4=
